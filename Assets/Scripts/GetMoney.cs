@@ -7,16 +7,16 @@ using UnityEngine.UI;
 
 public class GetMoney : MonoBehaviour
 {
-    [SerializeField] public Text score;
-    private int coast = 1;
+    [SerializeField] public Text Tscore;
+    private int cost = 1;
+    private int score = 0;
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.tag == "Money")
         {
-            int lastScore = Convert.ToInt32(score.text);
-            int newScore = lastScore + coast;
-            score.text = newScore.ToString();
+            score += cost;
+            Tscore.text = score.ToString();
         }
         Destroy(other.gameObject);
     }
