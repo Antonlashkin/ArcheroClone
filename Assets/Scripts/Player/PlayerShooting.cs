@@ -12,7 +12,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnEnable()
     {
-        PlayerRotatie.onKilledAveryBody += Anigilation;
+        PlayerRotatie.onKilledEveryBody += Anigilation;
     }
     private void Start()
     {
@@ -21,7 +21,7 @@ public class PlayerShooting : MonoBehaviour
 
     private void OnDestroy()
     {
-        PlayerRotatie.onKilledAveryBody -= Anigilation;
+        PlayerRotatie.onKilledEveryBody -= Anigilation;
     }
 
     private void Anigilation()

@@ -1,39 +1,34 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
-using System.Threading;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
 public class Countdown : MonoBehaviour
 {
-    //[SerializeField] private float time = 3;
-    //[SerializeField] public Text timerLabel;
-    //[SerializeField] private Animator animator;
+    [SerializeField] private float time = 4;
+    [SerializeField] private Text timerLabel; 
+    [SerializeField] private GameObject Player;
+    private StartGame Spawner;
 
-    //void Start()
-    //{
-    //    animator.updateMode = AnimatorUpdateMode.UnscaledTime;
-    //    timerLabel.text = time.ToString();
-    //    //Debug.Log("3");
-    //    //Debug.Log(timerLabel.text);
-    //    //Time.timeScale = 0f;
-    //    Thread thread = new Thread(Wait);
-    //    thread.Start();
-    //    //Time.timeScale = 0f;
-    //}
+    void Start()
+    {
+        Spawner = GetComponent<StartGame>();
+        timerLabel.text = time.ToString();
+    }
 
-
-    //private void Wait()
-    //{
-    //    Time.timeScale = 1f;
-    //    Debug.Log("Thread");
-    //    for (int i = 0; i < 3; i++)
-    //    {
-    //        time -= 1;
-    //        timerLabel.text = time.ToString();
-    //        Thread.Sleep(1000);
-    //        Debug.Log("Thread" + i);
-    //    }
-    //}
+    private void Update()
+    {
+        time -= Time.deltaTime;
+        int timeInt32 = (int)time;
+        timerLabel.text = timeInt32.ToString();
+        if (time <= 1)
+        {
+            timerLabel.text = "GO!";
+        }
+        if (time < 0)
+        {
+            Player.SetActive(true);
+            Spawner.Spawn();
+            Destroy(gameObject);
+        }
+    }
 }

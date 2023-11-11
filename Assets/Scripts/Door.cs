@@ -6,16 +6,16 @@ public class Door : MonoBehaviour
 {
     private void OnEnable()
     {
-        PlayerRotatie.onKilledAveryBody += Open;
+        PlayerRotatie.onKilledEveryBody += Open;
     }
 
     private void OnDestroy()
     {
-        PlayerRotatie.onKilledAveryBody -= Open;
+        PlayerRotatie.onKilledEveryBody -= Open;
     }
 
     private void Open()
     {
-        this.gameObject.SetActive(false);
+        gameObject.SetActive(false);
     }
 }

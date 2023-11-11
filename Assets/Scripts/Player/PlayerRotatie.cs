@@ -7,7 +7,7 @@ public class PlayerRotatie : MonoBehaviour
 {
     [SerializeField] private FixedJoystick _joystick;
     [SerializeField] private PlayerShooting shooting;
-    public static Action onKilledAveryBody;
+    public static Action onKilledEveryBody;
     public float sensitivityHor = 3.0f;
 
     GameObject[] enemy;
@@ -46,7 +46,7 @@ public class PlayerRotatie : MonoBehaviour
             }
             else
             {
-                onKilledAveryBody?.Invoke();
+                onKilledEveryBody?.Invoke();
             }
         }
     }
